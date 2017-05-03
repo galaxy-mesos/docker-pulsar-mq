@@ -13,8 +13,9 @@ RUN pip install virtualenv
 RUN mkdir -p /pulsar
 RUN virtualenv /pulsar/venv
 RUN . /pulsar/venv/bin/activate; pip install pulsar-app kombu
-#RUN . /pulsar/venv/bin/activate; pip install kombu
-RUN . /pulsar/venv/bin/activate; pulsar-config -c /pulsar --mq
+#RUN . /pulsar/venv/bin/activate; pip install kombu -----> si può eliminare
+#RUN . /pulsar/venv/bin/activate; pulsar-config -c /pulsar --mq   ----> errore
+RUN . /pulsar/venv/bin/activate;  pulsar-config --directory /pulsar --mq 
 
 # Avoid message: invoke-rc.d: policy-rc.d denied execution of start.
 RUN sed -i "s/^exit 101$/exit 0/" /usr/sbin/policy-rc.d
