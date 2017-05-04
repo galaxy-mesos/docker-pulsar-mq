@@ -24,4 +24,5 @@ RUN apt-get install -y rabbitmq-server
 # Configure Port
 EXPOSE 8913 5672
 
-CMD . /pulsar/venv/bin/activate; pulsar --daemon
+CMD . /pulsar/venv/bin/activate && \
+     pulsar --daemon -c /pulsar
