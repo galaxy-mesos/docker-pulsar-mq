@@ -25,4 +25,4 @@ RUN apt-get install -y rabbitmq-server
 EXPOSE 8913 5672
 
 CMD . /pulsar/venv/bin/activate && \
-     pulsar --daemon -c /pulsar
+     pulsar -c /pulsar  --daemon
