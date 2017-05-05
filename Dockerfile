@@ -2,9 +2,7 @@
 
 # Download base image ubuntu 16.04
 FROM ubuntu:16.04
-
 MAINTAINER mariangela.tomaiuolo@ba.infn.it
-
 # Define the ENV variable
 ENV container docker
 ARG DEBIAN_FRONTEND=noninteractive
