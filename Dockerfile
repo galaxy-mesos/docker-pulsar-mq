@@ -24,9 +24,9 @@ RUN pip install virtualenv
 RUN mkdir -p /pulsar && \
     virtualenv /pulsar/venv && \ 
     . /pulsar/venv/bin/activate && \
-    pip install pulsar-app \
-    kombu && \
-    pulsar-config --directory /pulsar --mq
+    pip install pulsar-app \ 
+   kombu
+RUN . /pulsar/venv/bin/activate && cd /pulsar && pulsar-config --mq
 
 # Avoid message: invoke-rc.d: policy-rc.d denied execution of start.
 RUN sed -i "s/^exit 101$/exit 0/" /usr/sbin/policy-rc.d
@@ -36,5 +36,5 @@ RUN apt-get install -y rabbitmq-server
 # Configure Port
 EXPOSE 8913 5672
 
-CMD . /pulsar/venv/bin/activate && \
-     pulsar -c /pulsar
+CMD . /pulsar/venv/bin/activate && cd /pulsar && pulsar 
+
